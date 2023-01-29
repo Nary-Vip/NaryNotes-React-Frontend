@@ -1,0 +1,154 @@
+.add-notes-container{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    height: 65vh;
+}
+
+.add-notes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    width: 40vw;
+    height: 50vh;
+    align-items: center;
+    background-color: white;
+}
+
+.colorPalatte{
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin: 20px 10px;
+    cursor: pointer;
+}
+
+.active{
+    border: 1px solid grey;
+}
+
+.colorPalatte:first-of-type{
+    margin-left: 0;
+}
+
+.colorPallate-container{
+    display: flex;
+}
+
+.submit-button{
+    /* margin: 10px 20px */
+    padding: 10px 20px;
+    background-color: #ef9a0b;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+}
+
+.add-notes-inner-container{
+    display: flex;
+    /* align-items: flex-start; */
+    flex-direction: column;
+}
+
+.center-title{
+    margin: 0 auto;
+}
+
+.add-a-note-text{
+    margin-bottom: 10px;
+}
+
+.author-created-time{
+    display: flex;
+    flex-direction: row;
+}
+
+.author-container{
+    margin-right: 5px;
+}
+
+.note-container{
+    width: max-content;
+    padding: 10px 20px;
+    margin: 0px 20px 30px 0px;
+    height: 230px;
+    width: 23vw;
+    min-width: 250;
+    border-radius: 10px;
+    background-color: bisque;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.note-content{
+    color: grey;
+    font-size: 14px;
+    margin: 5px 0px 5px 0px;
+}
+
+.note-title{
+    margin: 5px 0px 10px 0px;
+    color: black;
+}
+
+.note-list{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.note-time-ago{
+    color: grey;
+}
+
+.note-author-title{
+    color: rgb(78, 78, 78);
+}
+
+.add-note-container{
+    margin: 0 auto;
+    max-width: 400px;
+    background-color: oldlace;
+    padding: 20px;
+    border: 2px dotted antiquewhite;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-notes-container{
+    margin: 0 auto;
+    padding: 20px;
+    width: 100vw;
+    background-color: black;
+}
+
+.my-notes-text{
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 28px;
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.see-more-note-tab{
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.my-notes-inner-container{
+    width: 80vw;
+    margin: 0 auto;
+    padding-top: 40px;
+}
