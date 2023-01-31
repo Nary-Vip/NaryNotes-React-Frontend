@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     padding: 50px 0;
-    height: 65vh;
 }
 
 .add-notes{
@@ -13,8 +12,8 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    width: 40vw;
-    height: 50vh;
+    width: 35vw;
+    height: 55vh;
     align-items: center;
     background-color: white;
 }
@@ -37,6 +36,7 @@
 
 .colorPallate-container{
     display: flex;
+    justify-content:center;
 }
 
 .submit-button{
@@ -129,7 +129,7 @@
 .my-notes-container{
     margin: 0 auto;
     padding: 20px;
-    width: 100vw;
+    width: max-width;
     background-color: black;
 }
 
@@ -144,11 +144,86 @@
 
 .see-more-note-tab{
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
+    color: rgb(31, 31, 255);
+    cursor: pointer;
 }
 
 .my-notes-inner-container{
     width: 80vw;
     margin: 0 auto;
     padding-top: 40px;
+}
+
+.edit-note-pop-up{
+    position:absolute;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50vw;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    top:120%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    padding: 20px;
+}
+
+.edit-button{
+    background-color: greenyellow;
+    color: whitesmoke;
+}
+
+.edit-button:hover{
+    background-color: rgb(190, 255, 91);
+    transition: 0.3s ease-in-out;
+}
+
+.update-button-container{
+    margin: 10px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.cancel-button{
+    margin: 10px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.see-more-delete-icon-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-icon{
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.edit-icon{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.edit-icon:hover{
+    color: rgb(49, 49, 49);
+    scale: 1.1;
+}
+
+.delete-icon:hover{
+    color: rgb(49, 49, 49);
+    scale: 1.1;
+}
+
+.crud-icons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

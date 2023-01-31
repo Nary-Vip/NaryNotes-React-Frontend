@@ -1,0 +1,37 @@
+.note-page{
+    height: 70vh;
+    width: 70vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 25px;
+}
+
+.note-title{
+    margin: 10px;
+}
+
+.note-content{
+    color: grey;
+    margin: 20px 10px;
+}
+
+.close-icon-div{
+    display: flex;
+    justify-content: end;
+}
+
+.close-icon:hover{
+    scale: 1.08;
+    transition: 0.3s ease-in-out;
+}
+
+.close-icon{
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 10px;
+}

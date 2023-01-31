@@ -9,6 +9,7 @@ import { Note, User } from './models/Session';
 import Profile from './pages/Profile/Profile';
 import axios from 'axios';
 import AddNotes from './pages/Notes/AddNotes/AddNotes';
+import NotePage from './pages/Notes/NotePage/NotePage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -107,6 +108,7 @@ function App() {
               <Route path='profile' element={<Profile />} />
               <Route path="note">
                 <Route index element={<AddNotes />} />
+                {/* <Route path=":noteId" element={<NotePage note={undefined} }/>} /> */}
                 <Route path="add" element={<AddNotes />} />
               </Route>
             </Route>
