@@ -12,8 +12,8 @@ const NotePage = (props:{note:Note, closeState: Dispatch<SetStateAction<boolean>
               props.closeState(false);
             }} />
             </div>
-      <h1 className="note-title">{props.note.title}</h1>
-      <p className="note-content">{props.note.content}</p>
+      <h1 className="full-note-title">{props.note.title}</h1>
+      <p className="full-note-content">{props.note.content}</p>
     </div>  
   )
 }

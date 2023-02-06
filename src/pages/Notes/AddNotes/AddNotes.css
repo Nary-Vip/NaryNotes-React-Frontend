@@ -88,14 +88,14 @@
 }
 
 .note-content{
-    color: grey;
+    color: whitesmoke;
     font-size: 14px;
     margin: 5px 0px 5px 0px;
 }
 
 .note-title{
     margin: 5px 0px 10px 0px;
-    color: black;
+    color: white;
 }
 
 .note-list{
@@ -205,20 +205,22 @@
     font-size: 20px;
     cursor: pointer;
     margin: 0 10px;
+    color: red;
 }
 
 .edit-icon{
     font-size: 20px;
     cursor: pointer;
+    color: grey;
 }
 
 .edit-icon:hover{
-    color: rgb(49, 49, 49);
+    color: rgb(153, 153, 153);
     scale: 1.1;
 }
 
 .delete-icon:hover{
-    color: rgb(49, 49, 49);
+    color: rgb(255, 71, 71);
     scale: 1.1;
 }
 
@@ -226,4 +228,11 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.icon-user {
+    position:relative;
+    top: -10px;
+    left: -100px;
+    color: black;
 }

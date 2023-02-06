@@ -9,7 +9,6 @@ import { Note, User } from './models/Session';
 import Profile from './pages/Profile/Profile';
 import axios from 'axios';
 import AddNotes from './pages/Notes/AddNotes/AddNotes';
-import NotePage from './pages/Notes/NotePage/NotePage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

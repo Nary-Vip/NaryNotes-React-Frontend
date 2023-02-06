@@ -2,7 +2,7 @@ import "./Login.css";
 import React, { useContext, useState } from 'react'
 import { StateContext } from "../../context/SessionContext";
 import axios from 'axios';
-import { User } from '../../models/Session';
+import { Note, User } from '../../models/Session';
 
 const Login = () => {
   const session = useContext(StateContext);
@@ -21,7 +21,7 @@ const Login = () => {
       })
       .then(function (response) {
         console.log(response);
-        let user:User = response.data.response;
+        let user:User = response.data.user;
         session!.setLoginOrSignup!("none");
         session!.setFirstName!(user.firstName ?? "");
         session!.setLastName!(user.lastName ?? "");
@@ -38,6 +38,12 @@ const Login = () => {
       })
       .catch(function (error) {
         console.log(error);
+      }).finally(()=>{
+        axios.get('http://localhost:5000/notes', { params: { token: session?.access_token } }).then((response) => {
+          console.log(response);
+          const notes: Array<Note> = response.data.notes;
+          session?.setNotes!(notes);
+        });
       });
   }
 

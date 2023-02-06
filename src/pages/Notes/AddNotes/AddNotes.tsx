@@ -7,6 +7,7 @@ import "./AddNotes.css";
 import { AiOutlineEdit } from "react-icons/ai"; 
 import { MdDeleteForever } from "react-icons/md";
 import NotePage from '../NotePage/NotePage';
+import { BsMic } from "react-icons/bs";
 
 const AddNotes = () => {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ const AddNotes = () => {
   const [showFullNote, setShowFullNote] = useState(false);
   const [fullNote, setFullNote] = useState<Note | null>(null);
 
-  let colorSchemes = ["#FFC59D", "#CCEDF6", "#F2D2DD", "#ECB403", "#FDA18A"];
+  let colorSchemes = ["#093145", "#1287A8", "#AD2A1A", "#ECB944", "#FDA18A"];
 
   const session = useContext(StateContext);
 
@@ -113,11 +114,15 @@ const AddNotes = () => {
                   title} /></div>
             </div>
             <div className="row mt-4">
-              <div className=""><textarea onChange={(e) => {
+              <div className="form-group"><textarea onChange={(e) => {
                 showSingleNoteEditPage ?
                   setEditContent(e.target.value) :
                   setContent(e.target.value);
-              }} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" /></div>
+              }} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
+                
+              </textarea>
+              <span className="icon-user"><BsMic /></span>
+              </div>
             </div>
             <div className='colorPallate-container'>
               {colorSchemes.map((color) => {
@@ -143,7 +148,9 @@ const AddNotes = () => {
       </div>
       <div className='my-notes-container'>
         <div className='my-notes-inner-container'>
-          <div className='my-notes-text'>My Notes</div>
+          {session?.notes?.length === 0 || session?.notes === undefined?
+          <div className='my-notes-text'>No Notes available</div>:
+            <div className='my-notes-text'>My Notes</div>}
           <div className='note-list'>
             {session?.notes?.map((note, index) => {
               return <article key={index} className="note-container" style={{ backgroundColor: note.color }}>

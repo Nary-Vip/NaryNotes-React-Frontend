@@ -1,5 +1,6 @@
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { Note } from "../../models/Session";
+import "./TimeStamp.css";
 
 const TimeStamp = ({ createdAt }:Note) => {
   let timeAgo = '';

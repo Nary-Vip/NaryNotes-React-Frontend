@@ -6,16 +6,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 15px;
-    border: 1px solid black;
+    border: 1px solid grey;
     padding: 25px;
 }
 
-.note-title{
+.full-note-title{
     margin: 10px;
+    color: white;
 }
 
-.note-content{
-    color: grey;
+.full-note-content{
+    color: rgb(211, 211, 211);
     margin: 20px 10px;
 }
 
