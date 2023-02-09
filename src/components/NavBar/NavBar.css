@@ -2,7 +2,7 @@
 
 .navbar{
     display: flex;
-    height: 70px;
+    height: 10vh;
     justify-content: space-between;
     padding: 0px 50px;
     align-items: center;
@@ -11,7 +11,8 @@
 
 .nav-sign-container{
     padding: 0px 50px;
-    background-color: rgb(15, 15, 154);
+    background-color: #e2daf7;
+    /* rgb(15, 15, 154); */
 }
 
 .navbar-logo{
@@ -21,14 +22,14 @@
 
 .navbar-center-content-title{
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 32px;
     font-weight: 400;
     font-family: 'Vollkorn', serif;
 }
 
 .navbar-center-content-title:hover{
-    color: azure;
+    color: rgb(25, 25, 25);
 }
 
 .navbar-right-routes{
@@ -52,7 +53,7 @@
 
 .navbar-right-routes{
     margin: 0px 10px;
-    color: white;
+    color: black;
     
     text-decoration: none;
 }

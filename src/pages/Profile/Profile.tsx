@@ -9,6 +9,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const session = useContext(StateContext);
     const fetchDetails = () => {
+        console.warn(session!);
         setEmailId(session?.email ?? "");
         setFirstName(session?.firstName ?? "");
         setLastName(session?.lastName ?? "");
