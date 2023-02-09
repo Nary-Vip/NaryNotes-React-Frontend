@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StateContext } from '../../context/SessionContext';
 import axios from 'axios';
 import "./SignUp.css";
+import { AiOutlineClose } from 'react-icons/ai';
 
 const SignUp = () => {
   const session = useContext(StateContext);
@@ -32,6 +33,11 @@ const SignUp = () => {
     <div className='overlay'>
       <div className={"signup"}>
         <form className='signup-form'>
+        <div className="sign-up-close-pop-up"><AiOutlineClose className="sign-up-close-pop-up-icon" onClick={
+            () => {
+              session?.setLoginOrSignup!("none");
+            }
+          } /></div>
           <h2 className='signup-title'>SIGN UP</h2>
           <input className='signup-input username' placeholder="User Name" onChange={(e) => setEmail(e.target.value)} value={email} />
           <input type="password" className='signup-input password' placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />

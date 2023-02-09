@@ -65,6 +65,7 @@ function App() {
     if(token){
       axios.get('http://localhost:5000/users', { params: { token: token }})
       .then(function (response) {
+        console.log(response);
         const { data } = response;
         let user:User = data;
         setLoginOrSignUp("none");

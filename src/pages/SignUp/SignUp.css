@@ -19,8 +19,8 @@
 
 .signup-form{
     border-radius: 10px;
-    width: 30vw;
-    height: 400px;
+    width: 32vw;
+    height: 430px;
     padding: 30px 50px;
     background-color: white;
     display: flex;
@@ -72,3 +72,22 @@
     color: rgb(76, 76, 76);
     transition: 0.3 ease-in-out;
 }
+
+.sign-up-close-pop-up{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.sign-up-close-pop-up{
+    color: red;
+    font-size: 20px;    
+}
+
+.sign-up-close-pop-up-icon:hover{
+    transform: scale(1.12);
+    transition: 0.3s ease-in-out;
+}   
