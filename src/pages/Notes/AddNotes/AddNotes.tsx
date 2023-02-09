@@ -8,6 +8,8 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import NotePage from '../NotePage/NotePage';
 import { BsMic } from "react-icons/bs";
+import useRecorder from '../../../recorder/Recorder';
+import { WaveformAudioRecorder, WaveformAudioRecorderType } from 'waveform-audio-recorder';
 
 const AddNotes = () => {
   const [title, setTitle] = useState("");
@@ -19,10 +21,14 @@ const AddNotes = () => {
   const [selectedNoteId, setSelectedNoteId] = useState("");
   const [showFullNote, setShowFullNote] = useState(false);
   const [fullNote, setFullNote] = useState<Note | null>(null);
+  const [audioBlob, setAudioBlob] = useState<string|null>("");
 
   let colorSchemes = ["#093145", "#1287A8", "#AD2A1A", "#ECB944", "#FDA18A"];
 
   const session = useContext(StateContext);
+
+  const [recorderState, setRecorderState] = useState<WaveformAudioRecorderType | null>(null);
+  console.log(recorderState);
 
   const updateNote = () => {
     axios.patch('http://localhost:5000/notes', {
@@ -121,9 +127,13 @@ const AddNotes = () => {
               }} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
                 
               </textarea>
-              <span className="icon-user"><BsMic /></span>
+              <span className="icon-user" onClick={recorderState?.initRecording ? ()=>{recorderState?.saveRecording();
+              setAudioBlob(recorderState.audio);
+              console.log(audioBlob);
+              } : recorderState?.startRecording}><BsMic color={recorderState?.initRecording ? "red" : "gray"} /></span>
+                
               </div>
-            </div>
+            </div>  
             <div className='colorPallate-container'>
               {colorSchemes.map((color) => {
                 return <div key={color} onClick={() => {
@@ -144,6 +154,12 @@ const AddNotes = () => {
             }
           </div>
         </div>
+        {(audioBlob !== "")? <audio src={audioBlob!} />:<></>}
+       
+        <WaveformAudioRecorder setRecorderState={setRecorderState} />
+                {recorderState?.initRecording ? recorderState?.recordingDuration : ""}
+        
+        
 
       </div>
       <div className='my-notes-container'>

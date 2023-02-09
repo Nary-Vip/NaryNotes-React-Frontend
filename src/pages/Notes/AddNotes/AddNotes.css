@@ -234,5 +234,6 @@
     position:relative;
     top: -10px;
     left: -100px;
+    cursor: pointer;
     color: black;
 }

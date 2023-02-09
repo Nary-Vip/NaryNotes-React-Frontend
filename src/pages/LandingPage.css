@@ -1,0 +1,90 @@
+.landing-page{
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: #e4ddf4;
+}
+
+.center-flex{
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+}
+
+.left-center-flex{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+
+}
+.right-center-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-image{
+    width: 40vw;
+    height: 60vh;
+    border-radius: 10px;
+}
+
+.left-flex-title{
+    margin: 30px 0;
+}
+
+.left-flex-content{
+    color: grey;
+    font-size: 12px;
+    margin: 10px 0;
+    margin-bottom: 20px;
+}
+
+.left-flex-sign-up-button{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.left-flex-login-in-button{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(240, 255, 255, 0.2);
+    color: black;
+}
+
+.left-flex-login-in-button:hover{
+    background-color: rgb(240, 255, 255, 0.3);
+    transition: 0.3s ease-in-out;
+}
+
+.left-flex-sign-up-button:hover{
+    background-color: rgb(30, 29, 29);
+    transition: 0.3s ease-in-out;
+}
+
+.left-flex-sign-up-button-bold{
+    font-weight: 700;
+    padding-right: 5px;
+}
+
+.left-flex-login-in-button-bold{
+    font-weight: 700;
+}
