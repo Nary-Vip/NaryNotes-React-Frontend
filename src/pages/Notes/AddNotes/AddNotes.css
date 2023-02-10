@@ -11,20 +11,20 @@
 .add-notes{
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     border-radius: 10px;
     width: 35vw;
     height: 55vh;
     align-items: center;
-    background-color: rgb(255, 177, 177);
+    background-color: #dccefa;
 }
 
-.colorPalatte{
-    height: 30px;
-    width: 30px;
-    border-radius: 50px;
-    margin: 20px 10px;
-    cursor: pointer;
+.add-notes-inner-container{
+    display: flex;
+    width: 70%;
+    /* align-items: flex-start; */
+    flex-direction: column;
 }
 
 .active{
@@ -50,11 +50,6 @@
     font-weight: 700;
 }
 
-.add-notes-inner-container{
-    display: flex;
-    /* align-items: flex-start; */
-    flex-direction: column;
-}
 
 .center-title{
     margin: 0 auto;
@@ -212,7 +207,7 @@
 .edit-icon{
     font-size: 20px;
     cursor: pointer;
-    color: grey;
+    color: black;
 }
 
 .edit-icon:hover{
@@ -241,6 +236,36 @@
     height: 30px;
     width: 30px;
     margin: 5px;
+    margin-right: 3px;
+    transition: 0.5s ease-in;
+}
+
+.icon-user:hover{
+    transform: scale(1.05);
+    transition: 0.5s ease-in-out;
+}
+
+.icon-user:last-of-type{
+    margin-right: 10px;
+}
+
+.colorPalatte{
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin: 20px 10px;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+
+.colorPalatte:hover{
+    transform: scale(1.05);
+    transition: 0.5s ease-in-out;
+}
+
+.line-break{
+    border: 1px solid black;
+    height: 28px;
 }
 
 .mic-area{
@@ -258,4 +283,10 @@
     padding: 30px;
     background-color: aliceblue;
     border-radius: 10px;
+}
+
+.model-icons-stack{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

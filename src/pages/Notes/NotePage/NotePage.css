@@ -16,11 +16,12 @@
 }
 
 .full-note-content{
-    color: rgb(211, 211, 211);
+    color: whitesmoke;
     margin: 20px 10px;
 }
 
 .close-icon-div{
+    color: white;
     display: flex;
     justify-content: end;
 }

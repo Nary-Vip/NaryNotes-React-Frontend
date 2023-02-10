@@ -7,7 +7,10 @@ import "./AddNotes.css";
 import { AiOutlineEdit } from "react-icons/ai"; 
 import { MdDeleteForever } from "react-icons/md";
 import NotePage from '../NotePage/NotePage';
-import { BsMic } from "react-icons/bs";
+import {  BsMic } from "react-icons/bs";
+import { CiImageOn } from "react-icons/ci";
+
+// 
 import Recorder from '../../../components/Recorder/Recorder';
 
 const AddNotes = () => {
@@ -125,12 +128,17 @@ const AddNotes = () => {
                 showSingleNoteEditPage ?
                   setEditContent(e.target.value) :
                   setContent(e.target.value);
-              }} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
+              }} rows={4} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
               </textarea>
-              <BsMic className="icon-user" onClick={()=>setShowRecorder(true)}/>
+              
               </div>
             </div>  
             <div className='colorPallate-container'>
+            <div className='model-icons-stack'>
+              <BsMic className="icon-user" onClick={()=>setShowRecorder(true)}/>
+              <CiImageOn className="icon-user"/>
+              <div className='line-break'></div>
+              </div>
               {colorSchemes.map((color) => {
                 return <div key={color} onClick={() => {
                   setNoteColor(color);
