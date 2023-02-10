@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #e4ddf4;
     padding: 50px 0;
 }
 
@@ -15,7 +16,7 @@
     width: 35vw;
     height: 55vh;
     align-items: center;
-    background-color: white;
+    background-color: rgb(255, 177, 177);
 }
 
 .colorPalatte{
@@ -27,7 +28,7 @@
 }
 
 .active{
-    border: 1px solid grey;
+    border: 2px dotted black;
 }
 
 .colorPalatte:first-of-type{
@@ -231,9 +232,30 @@
 }
 
 .icon-user {
-    position:relative;
-    top: -10px;
-    left: -100px;
-    cursor: pointer;
     color: black;
+    cursor: pointer;
+    padding: 5px;
+    /* font-size: 20px; */
+    background-color: antiquewhite;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+
+.mic-area{
+    display: flex;
+    /* background-color: white; */
+    border-radius: 10px;
+    align-items: flex-end;
+    /* margin: 0 10px?; */
+}
+
+.recoder-container{
+    position: absolute;
+    top: 25%;
+    border: 2px dotted black;
+    padding: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
 }

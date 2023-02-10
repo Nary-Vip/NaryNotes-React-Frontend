@@ -1,0 +1,36 @@
+.recording-mic{
+    margin: 20px 0;
+    color: black;
+    cursor: pointer;
+    padding: 5px;
+    /* font-size: 20px; */
+    background-color: antiquewhite;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px
+}
+
+.recorder-tile{
+    height: 180px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.recorder-title{
+
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.recorder-wall{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

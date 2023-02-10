@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TimeStamp from '../../../components/note/TimeStamp';
 import { StateContext } from '../../../context/SessionContext';
 import { Note } from '../../../models/Session';
@@ -8,8 +8,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import NotePage from '../NotePage/NotePage';
 import { BsMic } from "react-icons/bs";
-import useRecorder from '../../../recorder/Recorder';
-import { WaveformAudioRecorder, WaveformAudioRecorderType } from 'waveform-audio-recorder';
+import Recorder from '../../../components/Recorder/Recorder';
 
 const AddNotes = () => {
   const [title, setTitle] = useState("");
@@ -21,15 +20,10 @@ const AddNotes = () => {
   const [selectedNoteId, setSelectedNoteId] = useState("");
   const [showFullNote, setShowFullNote] = useState(false);
   const [fullNote, setFullNote] = useState<Note | null>(null);
-  const [audioBlob, setAudioBlob] = useState<string|null>("");
+  const [showRecorder, setShowRecorder] = useState(false);
 
   let colorSchemes = ["#093145", "#1287A8", "#AD2A1A", "#ECB944", "#FDA18A"];
-
   const session = useContext(StateContext);
-
-  const [recorderState, setRecorderState] = useState<WaveformAudioRecorderType | null>(null);
-  console.log(recorderState);
-
   const updateNote = () => {
     axios.patch('http://localhost:5000/notes', {
       "title": editTitle,
@@ -81,6 +75,12 @@ const AddNotes = () => {
       })
   }
 
+  useEffect(() => {
+    setContent(session?.transcribedText! ?? "");
+    setShowRecorder(false);
+  }, [session?.transcribedText])
+  
+
   const deleteNote = (noteId:string)=>{
     console.log(noteId);
     axios.delete('http://localhost:5000/notes', {
@@ -105,7 +105,7 @@ const AddNotes = () => {
 
   return (
     <>
-      <div className='add-notes-container' style={{ backgroundColor: noteColor }}>
+      <div className='add-notes-container'>
         <div className='add-notes'>
           <div className='add-notes-inner-container'>
             <h2 className='center-title add-a-note-text'>{showSingleNoteEditPage ? "Edit" : "Add a Note"}</h2>
@@ -120,18 +120,14 @@ const AddNotes = () => {
                   title} /></div>
             </div>
             <div className="row mt-4">
-              <div className="form-group"><textarea onChange={(e) => {
+              <div className="form-group mic-area">
+                <textarea onChange={(e) => {
                 showSingleNoteEditPage ?
                   setEditContent(e.target.value) :
                   setContent(e.target.value);
               }} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
-                
               </textarea>
-              <span className="icon-user" onClick={recorderState?.initRecording ? ()=>{recorderState?.saveRecording();
-              setAudioBlob(recorderState.audio);
-              console.log(audioBlob);
-              } : recorderState?.startRecording}><BsMic color={recorderState?.initRecording ? "red" : "gray"} /></span>
-                
+              <BsMic className="icon-user" onClick={()=>setShowRecorder(true)}/>
               </div>
             </div>  
             <div className='colorPallate-container'>
@@ -142,7 +138,7 @@ const AddNotes = () => {
                 </div>
               })}
             </div>
-            <button onClick={showSingleNoteEditPage ? updateNote : addNote} className={showSingleNoteEditPage ? "submit-button edit-button" : "submit-button"}>
+            <button style={{ backgroundColor: noteColor }} onClick={showSingleNoteEditPage ? updateNote : addNote} className={showSingleNoteEditPage ? "submit-button edit-button" : "submit-button"}>
               {showSingleNoteEditPage ? "UPDATE" : "SUBMIT"}
             </button>
             {
@@ -154,13 +150,11 @@ const AddNotes = () => {
             }
           </div>
         </div>
-        {(audioBlob !== "")? <audio src={audioBlob!} />:<></>}
-       
-        <WaveformAudioRecorder setRecorderState={setRecorderState} />
-                {recorderState?.initRecording ? recorderState?.recordingDuration : ""}
-        
-        
-
+        {showRecorder? 
+        <div className="recoder-container">
+        <Recorder />
+        </div>
+        : <></>}
       </div>
       <div className='my-notes-container'>
         <div className='my-notes-inner-container'>

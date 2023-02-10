@@ -27,7 +27,9 @@ export interface User{
     profileUpdated?: string,
     setProfileUpdated?: Dispatch<SetStateAction<string>>,
     notes?: Array<Note>,
-    setNotes?: Dispatch<SetStateAction<Array<Note> | undefined>>
+    setNotes?: Dispatch<SetStateAction<Array<Note> | undefined>>,
+    transcribedText : string|null,
+    setTranscribedText : Dispatch<SetStateAction<string|null>>
 }
 
 export interface Note{

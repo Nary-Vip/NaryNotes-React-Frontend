@@ -24,8 +24,11 @@ function App() {
   const [profileUpdated, setProfileUpdated] = useState("");
   const [token, setToken] = useState(localStorage.getItem('narynotestoken') ?? "");
   const [notes, setNotes] = useState<Array<Note>>();
+  const [transcribedText, setTranscribedText] = useState<string | null>(null);
   
   const user: User = {
+    transcribedText,
+    setTranscribedText,
     notes: notes,
     setNotes: setNotes,
     access_token: token,
