@@ -25,6 +25,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('narynotestoken') ?? "");
   const [notes, setNotes] = useState<Array<Note>>();
   const [transcribedText, setTranscribedText] = useState<string | null>(null);
+  const [loader, setLoader] = useState(false);
   
   const user: User = {
     transcribedText,
@@ -54,18 +55,23 @@ function App() {
     setState: setState,
     setRoles: setRoles,
     setProfileUpdated: setProfileUpdated,
-    setEmail: setEmail, 
+    setEmail: setEmail,
+    loader: loader,
+    setLoader: setLoader
   }
 
   const getNotes = async ()=>{
+    setLoader(true);
     axios.get('http://localhost:5000/notes', { params: { token: token }})
     .then((response)=>{
       setNotes(response.data.notes);
-    })
+    });
+    setLoader(false);
   }
 
   const getUser = async () => {
     if(token){
+      setLoader(true);
       axios.get('http://localhost:5000/users', { params: { token: token }})
       .then(function (response) {
         const { data } = response;
@@ -84,7 +90,9 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      }).finally(()=>{
+        setLoader(false);
+      })
 
     }
   }

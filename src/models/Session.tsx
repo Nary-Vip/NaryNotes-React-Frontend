@@ -29,7 +29,9 @@ export interface User{
     notes?: Array<Note>,
     setNotes?: Dispatch<SetStateAction<Array<Note> | undefined>>,
     transcribedText : string|null,
-    setTranscribedText : Dispatch<SetStateAction<string|null>>
+    setTranscribedText : Dispatch<SetStateAction<string|null>>,
+    loader: boolean,
+    setLoader: Dispatch<SetStateAction<boolean>>,
 }
 
 export interface Note{

@@ -1,17 +1,20 @@
 .landing-page{
-    height: 90vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: #e4ddf4;
 }
 
 .center-flex{
-    margin: 30px;
+    margin: 0 30px;
+    height: 90vh;
     display: flex;
     justify-content: space-between;
     width: 85vw;
     border-radius: 10px;
+    margin-bottom: 100px;
     /* border: 1px solid black; */
 }
 
@@ -95,4 +98,80 @@
 
 .left-flex-login-in-button-bold{
     font-weight: 700;
+}
+
+.feature-1{
+    background-color: #010101;
+    width: 100vw;
+    display: flex;
+    justify-content:center;
+}
+
+.feature-landing-block{
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
+}
+
+.feature-image{
+    height: 40vh;
+    width: 38vw;
+    object-fit: cover;
+    margin-right: 50px;
+    border-radius: 20px;
+    transition: 0.3 ease-in;
+}
+
+.feature-image:hover{
+    transform: scale(1.03);
+    transition: 0.8s ease-in-out;
+}
+
+.feature-content{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.feature-description{
+    color: rgb(220, 215, 215);
+    /* width: 90%; */
+}
+
+.feature-title{
+    color: whitesmoke;
+    margin-bottom: 20px;
+}
+
+.feature-button{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.feature-button:hover{
+    background-color: rgb(23, 23, 23);
+    transition: 0.3s ease-in-out;
+}
+
+.feature-header{
+    color: white;
+}
+
+.feature-header-div{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.feature-landing-page{
+    margin-top: 20px;
 }

@@ -38,3 +38,10 @@
 .profile-button:hover{
     background-color: azure;
 }
+
+
+.profile-master-container{
+    height: 100vh;
+    background-color: #e4ddf4;
+    width: 100vw;
+}
