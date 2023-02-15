@@ -38,6 +38,15 @@
     cursor: pointer;
     font-size: 14px;
     color: whitesmoke;
+    text-decoration: none;
+    transition: 0.8s ease-in;
+}
+
+.footer-block a{
+    cursor: pointer;
+    font-size: 14px;
+    color: whitesmoke;
+    text-decoration: none;
     transition: 0.8s ease-in;
 }
 

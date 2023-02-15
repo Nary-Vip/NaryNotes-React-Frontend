@@ -19,9 +19,9 @@ const Footer = () => {
           <Link style={{ textDecoration: 'none'}} to="profile"><p>Profile</p></Link>
         </div>
         <div className='footer-block block-3'>
-          <h3>Model Resources</h3>
-          <p>Google's Terrasact</p>
-          <p>Wave2Vec</p>
+        <h3>Model Resources</h3>
+          <a href='https://github.com/tesseract-ocr/tesseract' target="_blank" rel="noreferrer"><p>Google's Terrasact</p></a>
+          <a href='https://ai.facebook.com/blog/wav2vec-20-learning-the-structure-of-speech-from-raw-audio/' target="_blank" rel="noreferrer"><p>Wave2Vec</p></a>
         </div>
       </div>
     </div>

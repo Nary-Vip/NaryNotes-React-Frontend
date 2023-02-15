@@ -76,16 +76,20 @@ const Profile = () => {
                 console.log(error);
             });
     }
-  useLayoutEffect(() => {
-    document.documentElement.scrollTo(0, 0);
-  }, [location.pathname]);
+    useLayoutEffect(() => {
+        document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
 
     return (
         <div className='profile-master-container'>
             <div className="container rounded mb-5">
                 <div className="row">
-                    <div className="col-md-5 border-right">
-                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" width="150px" alt="profile" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" /><span className="font-weight-bold">{firstName} {lastName}</span><span className="text-black-50">{emailId}</span><span> </span></div>
+                    <div className="col-md-5 mt-5 border-right">
+                        <input type="file"
+                            id="profileimage" name="profile"
+                            accept="image/png, image/jpeg" style={{ display: "none" }} />
+                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><label htmlFor='profileimage' className='profileimage'><img className="rounded-circle mt-5 " width="150px" alt="profile" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" />
+                        </label><span className="font-weight-bold">{firstName} {lastName}</span><span className="text-black-50">{emailId}</span><span> </span></div>
                     </div>
                     <div className="col-md-5 border-right">
                         <div className="p-3 py-5">
@@ -115,8 +119,8 @@ const Profile = () => {
                             </div>
                         </div> */}
                             <div className='button-array mt-5'>
-                                <div className="text-center"><button onClick={updateProfile} className="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                                <div className="text-center"><button onClick={logout} className="btn btn-danger profile-button" type="button">Logout</button></div>
+                                <button onClick={updateProfile} className="profile-button save" type="button">Save Profile</button>
+                                <button onClick={logout} className="profile-button logout" type="button">Logout</button>
                             </div>
                         </div>
                     </div>

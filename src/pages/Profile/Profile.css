@@ -21,12 +21,13 @@
 
 .button-array{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .profile-button{
     display: block;
     margin: 0 auto;
+    border-radius: 50px;
     border: none;
     padding: 5px;
     background-color: white;
@@ -34,14 +35,48 @@
     height: 100%;
 }
 
-
-.profile-button:hover{
-    background-color: azure;
+.profile-button.save{   
+    width: 200px;
+    height: 40px;
+    background-color: rgb(155, 255, 4);
+    color: white;
+    margin: 0 15px;
+    transition: 0.4s ease-in;
+    
 }
 
+.profile-button.logout{ 
+    width: 200px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    transition: 0.4s ease-in;
+}
+
+.profile-button.save:hover{
+    background-color: rgb(185, 255, 80);
+    transition: 0.4s ease-in-out;
+}
+
+.profile-button.logout:hover{
+    background-color: rgb(255, 85, 85);
+    transition: 0.4s ease-in-out;
+}
 
 .profile-master-container{
     height: 100vh;
-    background-color: #e4ddf4;
+    /* background-color: #e4ddf4; */
+    background-color: #FDEBED;
+    /* color: #FDEBED; */
     width: 100vw;
+}
+
+.profileimage{
+    cursor: pointer;
+}
+
+.profileimage:hover{
+    transition: 0.3s ease-in-out;
+    transform: scale(1.02);
+
 }

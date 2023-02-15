@@ -173,6 +173,7 @@
 
 .my-notes-inner-container{
     width: 80vw;
+    min-height: 9np0vh;
     margin: 0 auto;
 }
 
