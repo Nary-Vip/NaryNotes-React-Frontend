@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef, useLayoutEffect } from 'react';
 import TimeStamp from '../../../components/note/TimeStamp';
 import { StateContext } from '../../../context/SessionContext';
 import { Note } from '../../../models/Session';
@@ -12,6 +12,7 @@ import { CiImageOn } from "react-icons/ci";
 
 // 
 import Recorder from '../../../components/Recorder/Recorder';
+import { useLocation } from 'react-router-dom';
 
 const AddNotes = () => {
   const [title, setTitle] = useState("");
@@ -77,6 +78,33 @@ const AddNotes = () => {
         setContent("");
       })
   }
+  
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
+
+  const handleClick = (event:React.ChangeEvent<any>) => {
+    hiddenFileInput?.current?.click();
+  };
+
+  const handleImageUpload = (event:React.ChangeEvent<any>)=>{
+    const imageSelected = event.target.files[0];
+    session?.setLoader(true);
+    const image = new FormData();
+    image.append("image", imageSelected);
+    axios.post(
+      'http://localhost:5000/imagetext',
+      image,
+      )
+      .then(function (response) {
+          console.log(response);
+          session?.setTranscribedText(response.data.text);
+      })
+      .catch(function (error) {
+          console.log(error);
+      }).finally(() => {
+          session?.setLoader(false);
+      })
+
+  }
 
   useEffect(() => {
     setContent(session?.transcribedText! ?? "");
@@ -105,11 +133,15 @@ const AddNotes = () => {
         });
       })
   }
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
       <div className='add-notes-container'>
-        <div className='add-notes'>
+        <div className='add-notes' style={{height: showSingleNoteEditPage?"60vh" : "55vh"}}>
           <div className='add-notes-inner-container'>
             <h2 className='center-title add-a-note-text'>{showSingleNoteEditPage ? "Edit" : "Add a Note"}</h2>
             <div className="row mt-2">
@@ -128,7 +160,7 @@ const AddNotes = () => {
                 showSingleNoteEditPage ?
                   setEditContent(e.target.value) :
                   setContent(e.target.value);
-              }} rows={4} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder="Content" >
+              }} rows={4} className="form-control" value={showSingleNoteEditPage ? editContent : content} placeholder={session?.loader === true?"Model is processing your input, please wait" :"Content"} >
               </textarea>
               
               </div>
@@ -136,9 +168,10 @@ const AddNotes = () => {
             <div className='colorPallate-container'>
             <div className='model-icons-stack'>
               <BsMic className="icon-user" onClick={()=>setShowRecorder(true)}/>
-              <CiImageOn className="icon-user"/>
+              <CiImageOn className="icon-user" onClick={handleClick}/>
+              <input type='file' name='file' ref={hiddenFileInput} style={{display: "none"}} onChange={handleImageUpload}/>
               <div className='line-break'></div>
-              </div>
+            </div>
               {colorSchemes.map((color) => {
                 return <div key={color} onClick={() => {
                   setNoteColor(color);
@@ -166,7 +199,9 @@ const AddNotes = () => {
       </div>
       <div className='my-notes-container'>
         <div className='my-notes-inner-container'>
-          {session?.notes?.length === 0 || session?.notes === undefined?
+          {session?.loader? 
+          <div className='my-notes-text'>Loading your notes</div>:
+          session?.notes?.length === 0 || session?.notes === undefined?
           <div className='my-notes-text'>No Notes available</div>:
             <div className='my-notes-text'>My Notes</div>}
           <div className='note-list'>

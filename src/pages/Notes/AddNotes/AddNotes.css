@@ -69,12 +69,11 @@
 }
 
 .note-container{
-    width: max-content;
     padding: 10px 20px;
     margin: 0px 20px 30px 0px;
     height: 230px;
     width: 23vw;
-    min-width: 250;
+    min-width: 300px;
     border-radius: 10px;
     background-color: bisque;
     border: 1px solid transparent;
@@ -82,6 +81,33 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+@media screen and (max-width: 800px) {
+    .my-notes-inner-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .note-list{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .add-notes{
+        width: 90vw;
+        height: 100px;
+    }
+    .colorPalatte{
+        height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin: 20px 2px;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+    }
+  }
 
 .note-content{
     color: whitesmoke;
@@ -124,7 +150,7 @@
 
 .my-notes-container{
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 0;
     width: max-width;
     background-color: black;
 }
@@ -148,7 +174,6 @@
 .my-notes-inner-container{
     width: 80vw;
     margin: 0 auto;
-    padding-top: 40px;
 }
 
 .edit-note-pop-up{

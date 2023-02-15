@@ -9,6 +9,7 @@ import { Note, User } from './models/Session';
 import Profile from './pages/Profile/Profile';
 import axios from 'axios';
 import AddNotes from './pages/Notes/AddNotes/AddNotes';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -123,6 +124,7 @@ function App() {
               </Route>
             </Route>
           </Routes>
+          <Footer/>
         </Router>
       </StateContext.Provider>
     </>

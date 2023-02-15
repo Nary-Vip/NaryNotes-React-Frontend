@@ -8,6 +8,7 @@ import ocr from "../images/ocr.jpeg";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+
   const session = useContext(StateContext);
   return (
     <div className='landing-page'>
@@ -57,15 +58,19 @@ const LandingPage = () => {
             <div className='feature-content'>
               <h3 className='feature-title'>Take notes smartly with S2T Model</h3>
               <p className='feature-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis laudantium asperiores beatae, error, reiciendis odit dignissimos minima consequuntur corrupti quibusdam similique quas accusamus inventore praesentium voluptate corporis odio aliquam sapiente?</p>
-              <div className='feature-button'>Use Now</div>
+              <div className='feature-button' onClick={()=>{
+                navigate("/note");
+              }}>Use Now</div>
             </div>
           </div>
           {/* Feature - 2 */}
           <div className='feature-landing-block'>
             <div className='feature-content'>
               <h3 className='feature-title'>Take notes with OCR</h3>
-              <p className='feature-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis laudantium asperiores beatae, error, reiciendis odit dignissimos minima consequuntur corrupti quibusdam similique quas accusamus inventore praesentium voluptate corporis odio aliquam sapiente?</p>
-              <div className='feature-button'>Use Now</div>
+              <p className='feature-description'>NarNotes uses Google's Tesseract for Optical Character Recoginition. Tesseract has unicode (UTF-8) support, and can recognize more than 100 languages "out of the box". Tesseract supports various image formats including PNG, JPEG and TIFF.</p>
+              <div className='feature-button'  onClick={()=>{
+                navigate("/note");
+              }}>Use Now</div>
             </div>
             <img src={ocr} alt='feature' className='feature-image' />
           </div>

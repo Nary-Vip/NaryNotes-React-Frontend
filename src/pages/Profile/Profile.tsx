@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext, useLayoutEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { StateContext } from '../../context/SessionContext';
 import "./Profile.css";
 import axios from 'axios';
 import { User } from '../../models/Session';
 
 const Profile = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const session = useContext(StateContext);
     const fetchDetails = () => {
@@ -75,6 +76,9 @@ const Profile = () => {
                 console.log(error);
             });
     }
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
 
     return (
         <div className='profile-master-container'>

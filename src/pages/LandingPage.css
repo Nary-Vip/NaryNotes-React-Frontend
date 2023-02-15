@@ -108,10 +108,11 @@
 }
 
 .feature-landing-block{
-    margin: 100px 0;
+    margin: 150px 0;
     display: flex;
     justify-content: space-between;
     width: 85vw;
+    margin-top: 100px;
 }
 
 .feature-image{
@@ -170,6 +171,7 @@
     display: flex;
     justify-content: center;
     margin: 30px;
+    margin-bottom: 0;
 }
 
 .feature-landing-page{
