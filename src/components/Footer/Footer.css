@@ -67,3 +67,21 @@
     transition: 0.8s ease-in-out;
     box-shadow: 2px 2px grey;
 }
+
+
+@media screen and (max-width: 800px) {
+    .footer-inner-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-container{
+        height: 50vh;
+    }
+
+    .footer-block{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

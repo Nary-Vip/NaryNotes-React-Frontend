@@ -65,8 +65,8 @@
 
 .profile-master-container{
     height: 100vh;
-    /* background-color: #e4ddf4; */
-    background-color: #FDEBED;
+    background-color: #e4ddf4;
+    /* background-color: #FDEBED; */
     /* color: #FDEBED; */
     width: 100vw;
 }

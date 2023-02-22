@@ -39,6 +39,7 @@ const Profile = () => {
     const [country, setCountry] = useState("");
     const [state, setState] = useState("");
     const [role, setRole] = useState("");
+    const [profilePic, setProfilePic] = useState();
 
     // const switchRole = (event: MouseEvent) => {
     //     setRole(event.target!.);
@@ -87,7 +88,10 @@ const Profile = () => {
                     <div className="col-md-5 mt-5 border-right">
                         <input type="file"
                             id="profileimage" name="profile"
-                            accept="image/png, image/jpeg" style={{ display: "none" }} />
+                            accept="image/png, image/jpeg" style={{ display: "none" }} onClick={(event)=>{
+                                const target = event.target as Element;
+                                // setProfilePic(target.fil);
+                            }}/>
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5"><label htmlFor='profileimage' className='profileimage'><img className="rounded-circle mt-5 " width="150px" alt="profile" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" />
                         </label><span className="font-weight-bold">{firstName} {lastName}</span><span className="text-black-50">{emailId}</span><span> </span></div>
                     </div>

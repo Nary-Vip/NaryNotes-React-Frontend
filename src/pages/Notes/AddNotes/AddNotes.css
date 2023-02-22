@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 .add-notes-container{
     margin: 0 auto;
     display: flex;
@@ -48,14 +50,20 @@
     border-radius: 10px;
     color: white;
     font-weight: 700;
+    transition: 0.3s ease-in;
 }
 
+.submit-button:hover{
+    opacity: 0.85;
+    transition: 0.3s ease-in-out;
+}
 
 .center-title{
     margin: 0 auto;
 }
 
 .add-a-note-text{
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 10px;
 }
 
@@ -84,15 +92,28 @@
 
 @media screen and (max-width: 800px) {
     .my-notes-inner-container{
+        width: 80vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+    .colorPalatte{
+        height: 20px;
+        width: 20px;
+        border-radius: 50px;
+        margin: 20px 2px;
+        cursor: pointer;
+        transition: 0.5s ease-in;    
+    }
+    .note-container{
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
     .note-list{
         display: flex;
-        align-items: center;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
     }
     .add-notes{
@@ -101,11 +122,11 @@
     }
     .colorPalatte{
         height: 30px;
-    width: 30px;
-    border-radius: 50px;
-    margin: 20px 2px;
-    cursor: pointer;
-    transition: 0.5s ease-in;
+        width: 30px;
+        border-radius: 50px;
+        margin: 20px 2px;
+        cursor: pointer;
+        transition: 0.5s ease-in;
     }
   }
 
