@@ -27,6 +27,7 @@ function App() {
   const [notes, setNotes] = useState<Array<Note>>();
   const [transcribedText, setTranscribedText] = useState<string | null>(null);
   const [loader, setLoader] = useState(false);
+  const [profile, setProfile] = useState("");
   
   const user: User = {
     transcribedText,
@@ -58,7 +59,9 @@ function App() {
     setProfileUpdated: setProfileUpdated,
     setEmail: setEmail,
     loader: loader,
-    setLoader: setLoader
+    setLoader: setLoader,
+    profile: profile,
+    setProfile: setProfile
   }
 
   const getNotes = async ()=>{
@@ -88,6 +91,7 @@ function App() {
         setProfileUpdated(user.profileUpdated ?? "");
         setEmail(user.emailId ?? ""); 
         setIsLoggedIn(true);
+        setProfile(user?.profile ?? "")
       })
       .catch(function (error) {
         console.log(error);

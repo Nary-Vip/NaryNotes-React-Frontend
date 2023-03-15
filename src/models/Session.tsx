@@ -32,6 +32,8 @@ export interface User{
     setTranscribedText : Dispatch<SetStateAction<string|null>>,
     loader: boolean,
     setLoader: Dispatch<SetStateAction<boolean>>,
+    setProfile?: Dispatch<SetStateAction<string>>,
+    profile?: string,
 }
 
 export interface Note{
