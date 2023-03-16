@@ -10,6 +10,8 @@ import Profile from './pages/Profile/Profile';
 import axios from 'axios';
 import AddNotes from './pages/Notes/AddNotes/AddNotes';
 import Footer from './components/Footer/Footer';
+import { userAPI } from './api/userAPI';
+import { notesAPI } from './api/notesAPI';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +30,7 @@ function App() {
   const [transcribedText, setTranscribedText] = useState<string | null>(null);
   const [loader, setLoader] = useState(false);
   const [profile, setProfile] = useState("");
-  
+
   const user: User = {
     transcribedText,
     setTranscribedText,
@@ -64,40 +66,36 @@ function App() {
     setProfile: setProfile
   }
 
-  const getNotes = async ()=>{
+  const getNotes = async () => {
     setLoader(true);
-    axios.get('http://localhost:5000/notes', { params: { token: token }})
-    .then((response)=>{
-      setNotes(response.data.notes);
-    });
+    notesAPI.getUserNotes(token).then((notes:Note[])=>{
+      setNotes(notes);
+    })
     setLoader(false);
   }
 
   const getUser = async () => {
-    if(token){
+    if (token) {
       setLoader(true);
-      axios.get('http://localhost:5000/users', { params: { token: token }})
-      .then(function (response) {
-        const { data } = response;
-        let user:User = data.user;
+      userAPI.getUser(token).then((user: User) => {
         setLoginOrSignUp("none");
         setFirstName(user?.firstName ?? "");
         setLastName(user.lastName ?? "");
         setAge(user?.age ?? "");
-        setMobileNumber(user?.mobileNumber?? "");
-        setCountry(user.country?? "");
+        setMobileNumber(user?.mobileNumber ?? "");
+        setCountry(user.country ?? "");
         setState(user.state ?? "");
         setRoles(user.roles ?? "");
         setProfileUpdated(user.profileUpdated ?? "");
-        setEmail(user.emailId ?? ""); 
+        setEmail(user.emailId ?? "");
         setIsLoggedIn(true);
         setProfile(user?.profile ?? "")
-      })
-      .catch(function (error) {
+      }).catch((error: String) => {
         console.log(error);
-      }).finally(()=>{
-        setLoader(false);
       })
+        .finally(() => {
+          setLoader(false);
+        })
 
     }
   }
@@ -111,7 +109,7 @@ function App() {
 
   return (
     <>
-      <StateContext.Provider value={ user }>
+      <StateContext.Provider value={user}>
         <Router>
           <NavBar />
           <Routes>
@@ -128,7 +126,7 @@ function App() {
               </Route>
             </Route>
           </Routes>
-          <Footer/>
+          <Footer />
         </Router>
       </StateContext.Provider>
     </>

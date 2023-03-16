@@ -14,6 +14,8 @@ import storage from "../../../firebase/firebase_connect";
 import Recorder from '../../../components/Recorder/Recorder';
 import { useLocation } from 'react-router-dom';
 import { getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
+import { notesAPI } from '../../../api/notesAPI';
+import LoadingBar from 'react-top-loading-bar';
 
 const AddNotes = () => {
   const [title, setTitle] = useState("");
@@ -26,58 +28,65 @@ const AddNotes = () => {
   const [showFullNote, setShowFullNote] = useState(false);
   const [fullNote, setFullNote] = useState<Note | null>(null);
   const [showRecorder, setShowRecorder] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [percent, setPercent] = useState(0);
-
   let colorSchemes = ["#093145", "#1287A8", "#AD2A1A", "#ECB944", "#FDA18A"];
   const session = useContext(StateContext);
+
   const updateNote = () => {
-    axios.patch('http://localhost:5000/notes', {
+    setProgress(10);
+    const note = {
       "title": editTitle,
       "content": editContent,
       "tags": "personal",
       "color": noteColor,
       "token": session?.access_token,
       "noteId": selectedNoteId
-    })
-      .then(function (response) {
+    }
+    setProgress(50);
+    notesAPI.updateUserNote(note)
+      .then(function (response:any) {
         console.log(response);
+        setProgress(70);
       })
-      .catch(function (error) {
+      .catch(function (error:any) {
         console.log(error);
       }).finally(() => {
-        axios.get('http://localhost:5000/notes', { params: { token: session?.access_token } }).then((response) => {
-          console.log(response);
-          const notes: Array<Note> = response.data.notes;
+        notesAPI.getUserNotes(session?.access_token).then((notes: Note[]) => {
           session?.setNotes!(notes);
         });
         setEditTitle("");
         setEditContent("");
         setshowSingleNoteEditPage(false);
+        setProgress(100);
       })
 
   };
 
   const addNote = () => {
-    axios.post('http://localhost:5000/notes', {
+    setProgress(10);
+    const note = {
       "title": title,
       "content": content,
       "tags": "personal",
       "color": noteColor,
       "token": session?.access_token
-    })
-      .then(function (response) {
-        console.log(response);
+    };
+    setProgress(50);
+    notesAPI.addUserNotes(note)
+      .then((response: any)=> {
+        // console.log("response");
+        setProgress(80);
       })
-      .catch(function (error) {
+      .catch(function (error: any) {
         console.log(error);
       }).finally(() => {
-        axios.get('http://localhost:5000/notes', { params: { token: session?.access_token } }).then((response) => {
-          console.log(response);
-          const notes: Array<Note> = response.data.notes;
+        notesAPI.getUserNotes(session?.access_token).then((notes: Note[]) => {
           session?.setNotes!(notes);
         });
         setTitle("");
         setContent("");
+        setProgress(100);
       })
   }
 
@@ -117,8 +126,8 @@ const AddNotes = () => {
           axios.post(
             'http://localhost:5000/notes/content',
             {
-            "imageUrl": url,
-            "token": session?.access_token
+              "imageUrl": url,
+              "token": session?.access_token
             }
           )
             .then(function (response) {
@@ -133,7 +142,7 @@ const AddNotes = () => {
         });
       }
     );
-    
+
 
   }
 
@@ -144,24 +153,24 @@ const AddNotes = () => {
 
 
   const deleteNote = (noteId: string) => {
-    console.log(noteId);
-    axios.delete('http://localhost:5000/notes', {
-      data: {
-        "token": session?.access_token,
-        "noteId": noteId
-      }
-    })
-      .then(function (response) {
+    setProgress(10);
+    const body = {
+      "token": session?.access_token,
+      "noteId": noteId
+    }
+    setProgress(30);
+    notesAPI.deleteUserNote(body)
+      .then((response:any) =>{
         console.log(response);
+        setProgress(70);
       })
-      .catch(function (error) {
+      .catch(function (error:any) {
         console.log(error);
       }).finally(() => {
-        axios.get('http://localhost:5000/notes', { params: { token: session?.access_token } }).then((response) => {
-          console.log(response);
-          const notes: Array<Note> = response.data.notes;
+        notesAPI.getUserNotes(session?.access_token).then((notes: Note[]) => {
           session?.setNotes!(notes);
         });
+        setProgress(100);
       })
   }
   const location = useLocation();
@@ -172,6 +181,11 @@ const AddNotes = () => {
   return (
     <>
       <div className='add-notes-container'>
+      <LoadingBar
+                color='#000000'
+                progress={progress}
+                onLoaderFinished={() => setProgress(0)}
+            />
         <div className='add-notes' style={{ height: showSingleNoteEditPage ? "60vh" : "55vh" }}>
           <div className='add-notes-inner-container'>
             <h2 className='center-title add-a-note-text'>{showSingleNoteEditPage ? "Edit" : "Add a Note"}</h2>

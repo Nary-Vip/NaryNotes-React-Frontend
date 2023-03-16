@@ -7,15 +7,16 @@ import { User } from '../../models/Session';
 import storage from "../../firebase/firebase_connect";
 import { getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
 import LoadingBar from 'react-top-loading-bar'
+import { userAPI } from '../../api/userAPI';
+import { AiOutlineCamera } from 'react-icons/ai';
 
 const Profile = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const session = useContext(StateContext);  
+    const session = useContext(StateContext);
     const [progress, setProgress] = useState(0)
 
     const fetchDetails = () => {
-        console.warn(session!);
         setEmailId(session?.email ?? "");
         setFirstName(session?.firstName ?? "");
         setLastName(session?.lastName ?? "");
@@ -35,7 +36,7 @@ const Profile = () => {
 
     useEffect(() => {
         fetchDetails();
-    }, []);
+    }, [session?.firstName]);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -47,12 +48,9 @@ const Profile = () => {
     const [profile, setProfile] = useState("");
     const [role, setRole] = useState("");
 
-    // const switchRole = (event: MouseEvent) => {
-    //     setRole(event.target!.);
-    // }
-
     const updateProfile = () => {
-        axios.patch('http://localhost:5000/users', {
+        setProgress(10);
+        const body = {
             "roles": "user",
             "token": session!.access_token,
             "emailId": emailId,
@@ -63,27 +61,27 @@ const Profile = () => {
             "country": country,
             "state": state,
             "profile": profile
-        })
-            .then(function (response) {
-                // console.log(response);
-                let user: User = response.data.response;
-                session!.setLoginOrSignup!("none");
-                session!.setFirstName!(user?.firstName ?? "");
-                session!.setLastName!(user?.lastName ?? "");
-                session!.setAge!(user?.age ?? "");
-                session!.setMobileNumber!(user?.mobileNumber ?? "");
-                session!.setCountry!(user?.country ?? "");
-                session!.setState!(user?.state ?? "");
-                session!.setRoles!(user?.roles ?? "");
-                session!.setProfileUpdated!(user?.profileUpdated ?? "");
-                session!.setEmail!(user?.emailId ?? "");
-                session!.setIsLoggedIn!(true);
-                session!.setProfile!(profile ?? "");
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        }
+        setProgress(25);
+        userAPI.updateProfile(body).then((user: User) => {
+            session!.setLoginOrSignup!("none");
+            session!.setFirstName!(user?.firstName ?? "");
+            session!.setLastName!(user?.lastName ?? "");
+            session!.setAge!(user?.age ?? "");
+            setProgress(70);
+            session!.setMobileNumber!(user?.mobileNumber ?? "");
+            session!.setCountry!(user?.country ?? "");
+            session!.setState!(user?.state ?? "");
+            session!.setRoles!(user?.roles ?? "");
+            session!.setProfileUpdated!(user?.profileUpdated ?? "");
+            session!.setEmail!(user?.emailId ?? "");
+            session!.setIsLoggedIn!(true);
+            session!.setProfile!(profile ?? "");
+            setProgress(100);
+        }).catch(function (error) {
+            console.log(error);
+        });
+
     }
     useLayoutEffect(() => {
         document.documentElement.scrollTo(0, 0);
@@ -92,10 +90,10 @@ const Profile = () => {
     return (
         <div className='profile-master-container'>
             <LoadingBar
-        color='#f11946'
-        progress={progress}
-        onLoaderFinished={() => setProgress(0)}
-      />
+                color='#000000'
+                progress={progress}
+                onLoaderFinished={() => setProgress(0)}
+            />
             <div className="container rounded mb-5">
                 <div className="row">
                     <div className="col-md-5 mt-5 border-right">
@@ -105,7 +103,7 @@ const Profile = () => {
                                 const target = e.target.files[0];
                                 const storageRef = ref(storage, `/profile/${target.name}`);
                                 const uploadTask = uploadBytesResumable(storageRef, target);
-                                
+
                                 uploadTask.on(
                                     "state_changed",
                                     (snapshot) => {
@@ -128,7 +126,10 @@ const Profile = () => {
                                 );
                                 // setProfilePic(target.fil);
                             }} />
-                        <div className="d-flex flex-column align-items-center text-center py-5"><label htmlFor='profileimage' className='profileimage'><img className="rounded-circle mt-5 " width="120px" height="120px" alt="profile" src={profile !==""? profile: "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"} />
+                        <div className="d-flex flex-column align-items-center text-center py-5"><label htmlFor='profileimage' className='profileimage'><img className="rounded-circle mt-5 " width="120px" height="120px" alt="profile" src={profile !== "" ? profile : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"} />
+                        <div className='editProfile'>
+                            <AiOutlineCamera />
+                        </div>
                         </label><span className="font-weight-bold name-display mt-3">{firstName} {lastName}</span><span className="email-display">{emailId}</span><span> </span></div>
                     </div>
                     <div className="col-md-5 border-right">

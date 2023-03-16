@@ -1,91 +1,102 @@
 .form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
+  box-shadow: none;
+  border-color: #ba68c8;
 }
 
 .back:hover {
-    color: #682773;
-    cursor: pointer
+  color: #682773;
+  cursor: pointer;
 }
 
 .labels {
-    font-size: 11px
+  font-size: 11px;
 }
 
 .add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
+  background: #ba68c8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #ba68c8;
 }
 
-.button-array{
-    display: flex;
-    justify-content: center;
+.button-array {
+  display: flex;
+  justify-content: center;
 }
 
-.profile-button{
-    display: block;
-    margin: 0 auto;
-    border-radius: 50px;
-    border: none;
-    padding: 5px;
-    background-color: white;
-    width: 100%;
-    height: 100%;
+.profile-button {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50px;
+  border: none;
+  padding: 5px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
 }
 
-.profile-button.save{   
-    width: 200px;
-    height: 40px;
-    background-color: rgb(155, 255, 4);
-    color: white;
-    margin: 0 15px;
-    transition: 0.4s ease-in;
-    
+.profile-button.save {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(155, 255, 4);
+  color: white;
+  margin: 0 15px;
+  transition: 0.4s ease-in;
 }
 
-.profile-button.logout{ 
-    width: 200px;
-    height: 40px;
-    background-color: red;
-    color: white;
-    transition: 0.4s ease-in;
+.profile-button.logout {
+  width: 200px;
+  height: 40px;
+  background-color: red;
+  color: white;
+  transition: 0.4s ease-in;
 }
 
-.profile-button.save:hover{
-    background-color: rgb(185, 255, 80);
-    transition: 0.4s ease-in-out;
+.profile-button.save:hover {
+  background-color: rgb(185, 255, 80);
+  transition: 0.4s ease-in-out;
 }
 
-.profile-button.logout:hover{
-    background-color: rgb(255, 85, 85);
-    transition: 0.4s ease-in-out;
+.profile-button.logout:hover {
+  background-color: rgb(255, 85, 85);
+  transition: 0.4s ease-in-out;
 }
 
-.profile-master-container{
-    height: 100vh;
-    background-color: #e4ddf4;
-    /* background-color: #FDEBED; */
-    /* color: #FDEBED; */
-    width: 100vw;
+.profile-master-container {
+  height: 100vh;
+  background-color: #e4ddf4;
+  /* background-color: #FDEBED; */
+  /* color: #FDEBED; */
+  width: 100vw;
 }
 
-.profileimage{
-    cursor: pointer;
+.profileimage {
+  position: relative;
 }
 
-.profileimage:hover{
-    transition: 0.3s ease-in-out;
-    transform: scale(1.02);
+.editProfile {
+  background-color: rgba(231, 230, 230, 0.8);
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
 }
 
-.email-display{
-    font-size: 14px;
-    color: grey;
+.editProfile:hover {
+  transition: 0.3s ease-in;
+  transform: scale(1.02);
 }
 
-.name-display{
-    font-size: 18px;
-    font-weight: 700;
+.email-display {
+  font-size: 14px;
+  color: grey;
+}
+
+.name-display {
+  font-size: 18px;
+  font-weight: 700;
 }
